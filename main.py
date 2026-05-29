@@ -4,13 +4,9 @@ import os
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 
-# routers
 from handlers.start import router as start_router
 from handlers.referral import router as referral_router
 from handlers.profile import router as profile_router
-
-# دیتابیس
-import database
 
 load_dotenv()
 
@@ -19,14 +15,13 @@ TOKEN = os.getenv("BOT_TOKEN")
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-# ثبت Router ها
 dp.include_router(start_router)
 dp.include_router(referral_router)
 dp.include_router(profile_router)
 
 
 async def main():
-    print("✅ ربات روشن شد...")
+    print("✅ Bot Started")
     await dp.start_polling(bot)
 
 
